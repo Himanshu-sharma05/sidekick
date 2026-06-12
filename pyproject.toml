@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "aiosqlite>=0.22.1",
     "beautifulsoup4>=4.15.0",
     "gradio>=6.17.3",
     "ipython>=9.14.1",
@@ -19,4 +20,5 @@ dependencies = [
     "playwright>=1.60.0",
     "pydantic>=2.13.4",
     "python-dotenv>=1.2.2",
+    "wikipedia>=1.4.0",
 ]

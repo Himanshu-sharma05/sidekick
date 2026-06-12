@@ -3,7 +3,7 @@ from langchain_community.utilities import GoogleSerperAPIWrapper
 from playwright.async_api import async_playwright
 from langchain_community.agent_toolkits import PlayWrightBrowserToolkit
 from langchain_community.agent_toolkits import FileManagementToolkit
-from langchain.agents import Tool
+from langchain_core.tools import Tool
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain_community.utilities.wikipedia import WikipediaAPIWrapper
 from langchain_community.tools.wikipedia.tool import WikipediaQueryRun

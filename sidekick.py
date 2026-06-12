@@ -4,11 +4,10 @@ from dotenv import load_dotenv
 from langgraph.graph.message import add_messages
 from typing import List, Any, Optional, Dict
 from pydantic import BaseModel, Field
-import sqlite3
 import uuid
 import asyncio
 from datetime import datetime
-from langgraph.checkpoint.sqlite import SqliteSaver
+from langgraph.checkpoint.memory import MemorySaver
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, START, END
@@ -18,10 +17,6 @@ from langgraph.prebuilt import ToolNode
 from sidekick_tools import playwright_tools,other_tools
 
 load_dotenv(override=True)
-
-db_path = "memory.db"
-conn = sqlite3.connect(db_path,check_same_thread=False)
-sql_memory = SqliteSaver(conn)
 
 class State(TypedDict):
     messages:Annotated[List[Any],add_messages]
@@ -44,7 +39,7 @@ class Sidekick:
         self.llm_with_tools = None
         self.graph = None
         self.sidekick_id = str(uuid.uuid4())
-        self.memory = sql_memory
+        self.memory = MemorySaver()
         self.browser = None
         self.playwright = None
 
