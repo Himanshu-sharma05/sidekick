@@ -29,9 +29,9 @@ async def other_tools():
 
     tool_search = Tool(
         name="search",
-        func=serper.run
-        description="Use this tool when you want to get online web search results"
-    )
+        func=serper.run,
+        description="Use this tool when you want to get online web search results")
+    
 
     wikipedia = WikipediaAPIWrapper()
     wiki_tool = WikipediaQueryRun(api_wrapper=wikipedia)
